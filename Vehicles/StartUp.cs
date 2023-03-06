@@ -16,6 +16,10 @@ namespace Vehicles
             IVehicleFactory factory = new VehicleFactory();
 
             IEngine engine = new Engine(reader, writer, factory);
+
+            engine.Run();
+
+            //TODO: The truck has hole in the tank !
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Vehicles.Core.Interfaces;
 using Vehicles.Factories.Interfaces;
 using Vehicles.IO;
@@ -27,6 +28,29 @@ namespace Vehicles.Core
         {
             vehicles.Add(CreateVehicle()); //car
             vehicles.Add(CreateVehicle()); //truck
+
+            int commandsCount = int.Parse(reader.ReadLine());
+
+            for (int i = 0; i < commandsCount; i++)
+            {
+                try
+                {
+                    ProcessCommand();
+                }
+                catch (ArgumentException ex)
+                {
+                    writer.WriteLine(ex.Message);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+            }
+            foreach (var vehicle in vehicles)
+            {
+                writer.WriteLine(vehicle.ToString());
+            }
         }
 
         private IVehicle CreateVehicle()
@@ -38,6 +62,32 @@ namespace Vehicles.Core
 
             return vehicleFactory.Create(tokens[0], double.Parse(tokens[1]), double.Parse(tokens[2]));
 
+        }
+
+        private void ProcessCommand()
+        {
+            string[] commandTokens = reader.ReadLine()
+                    .Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+            string command = commandTokens[0];
+            string vehicleType = commandTokens[1];
+
+            IVehicle vehicle = vehicles.FirstOrDefault(v => v.GetType().Name == vehicleType);
+
+            if (vehicle == null)
+            {
+                throw new ArgumentException("Invalid vehicle type");
+            }
+            else if (command == "Drive")
+            {
+                double distance = double.Parse(commandTokens[2]);
+                writer.WriteLine(vehicle.Drive(distance));
+            }
+            else if (command == "Refuel")
+            {
+                double amount = double.Parse(commandTokens[2]);
+                vehicle.Refuel(amount);
+            }
         }
     }
 }

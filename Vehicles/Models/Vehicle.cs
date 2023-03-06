@@ -26,7 +26,7 @@ namespace Vehicles.Models
             //To be independent of the environment - Console,File,Stream or Web...
             double totalConsumption = FuelConsumption + increasedConsumption;
 
-            if (FuelQuantity < FuelConsumption * distance)
+            if (FuelQuantity < totalConsumption * distance)
             {
                 //(Car/Truck needs refueling) how to know Car or Truck? !!this.GetType().Name!!
                 throw new ArgumentException($"{this.GetType().Name} needs refueling");
@@ -37,7 +37,7 @@ namespace Vehicles.Models
 
         }
 
-        public void Refuel(double amount)
+        public virtual void Refuel(double amount)
             => FuelQuantity += amount;
 
         public override string ToString()
