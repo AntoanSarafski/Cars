@@ -33,6 +33,9 @@ namespace Vehicles.Models
 
             }
 
+
+            FuelQuantity -= totalConsumption * distance;
+
             return $"{this.GetType().Name} travelled {distance} km";
 
         }
