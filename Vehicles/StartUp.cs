@@ -1,4 +1,6 @@
 ﻿using System;
+using Vehicles.Core.Interfaces;
+using Vehicles.IO;
 
 namespace Vehicles
 {
@@ -6,7 +8,10 @@ namespace Vehicles
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            IReader reader = new ConsoleReader();
+            IWriter writer = new ConsoleWriter();
+
+            IEngine engine = new IEngine(reader, writer)
         }
     }
 }
