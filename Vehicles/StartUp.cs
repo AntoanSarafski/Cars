@@ -1,5 +1,8 @@
 ﻿using System;
+using Vehicles.Core;
 using Vehicles.Core.Interfaces;
+using Vehicles.Factories;
+using Vehicles.Factories.Interfaces;
 using Vehicles.IO;
 
 namespace Vehicles
@@ -10,8 +13,9 @@ namespace Vehicles
         {
             IReader reader = new ConsoleReader();
             IWriter writer = new ConsoleWriter();
+            IVehicleFactory factory = new VehicleFactory();
 
-            IEngine engine = new IEngine(reader, writer)
+            IEngine engine = new Engine(reader, writer, factory);
         }
     }
 }
