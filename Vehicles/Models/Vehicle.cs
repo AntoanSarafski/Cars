@@ -28,18 +28,19 @@ namespace Vehicles.Models
 
             if (FuelQuantity < FuelConsumption * distance)
             {
+                //(Car/Truck needs refueling) how to know Car or Truck? !!this.GetType().Name!!
                 throw new ArgumentException($"{this.GetType().Name} needs refueling");
-                // how to know Car or Truck ?? this.GetType().Name !
 
             }
 
-            return $"Car/Truck travelled {distance} km";
+            return $"{this.GetType().Name} travelled {distance} km";
 
         }
 
-        public void Refuel(double liters)
-        {
-            throw new System.NotImplementedException();
-        }
+        public void Refuel(double amount)
+            => FuelQuantity += amount;
+
+        public override string ToString()
+            => $"{this.GetType().Name}: {FuelQuantity:F2}";
     }
 }

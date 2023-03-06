@@ -8,6 +8,6 @@
 
         public string Drive(double distance);
 
-        public void Refuel(double liters);
+        public void Refuel(double amount);
     }
 }
