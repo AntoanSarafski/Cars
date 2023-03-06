@@ -12,14 +12,12 @@ namespace Vehicles
         static void Main(string[] args)
         {
             IReader reader = new ConsoleReader();
-            IWriter writer = new ConsoleWriter();
+            IWriter writer = new FileWriter();
             IVehicleFactory factory = new VehicleFactory();
 
             IEngine engine = new Engine(reader, writer, factory);
 
             engine.Run();
-
-            //TODO: The truck has hole in the tank !
         }
     }
 }
