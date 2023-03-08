@@ -58,9 +58,21 @@ namespace Vehicles.Core
             string[] tokens = reader.ReadLine()
                 .Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
-            // tokens[] = type,fuelQuantity,fuelConsumption
+            string type = tokens[0];
+            double fuelQuantity = double.Parse(tokens[1]);
+            double fuelConsumption = double.Parse(tokens[2]);
+            int tankCapacity = int.Parse(tokens[3]);
 
-            return vehicleFactory.Create(tokens[0], double.Parse(tokens[1]), double.Parse(tokens[2]), int.Parse(tokens[3]));
+            // tokens[] = type,fuelQuantity,fuelConsumption
+            if (fuelQuantity > tankCapacity)
+            {
+                fuelQuantity = 0;
+                return vehicleFactory.Create(type, fuelQuantity, fuelConsumption, tankCapacity);
+            }
+            else
+            {
+                return vehicleFactory.Create(type, fuelQuantity, fuelConsumption, tankCapacity);
+            }
 
         }
 

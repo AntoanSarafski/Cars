@@ -45,7 +45,13 @@ namespace Vehicles.Models
         }
 
         public virtual void Refuel(double amount)
-            => FuelQuantity += amount;
+        {
+            if (amount + FuelQuantity > TankCapacity)
+            {
+                // TODO Method CanRefuel() ? I don't wanna use Console.WriteLine, cuz i wanna have a good abstraction with IWriter.
+            }
+            FuelQuantity += amount;
+        }
 
         public override string ToString()
             => $"{this.GetType().Name}: {FuelQuantity:F2}";
