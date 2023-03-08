@@ -21,12 +21,12 @@ namespace Vehicles.Core
             this.reader = reader;
             this.writer = writer;
             this.vehicleFactory = vehicleFactory;
-
             vehicles = new List<IVehicle>(); 
         }
         public void Run()
         {
             vehicles.Add(CreateVehicle()); //car
+            vehicles.Add(CreateVehicle()); //truck
             vehicles.Add(CreateVehicle()); //truck
 
             int commandsCount = int.Parse(reader.ReadLine());
@@ -60,7 +60,7 @@ namespace Vehicles.Core
 
             // tokens[] = type,fuelQuantity,fuelConsumption
 
-            return vehicleFactory.Create(tokens[0], double.Parse(tokens[1]), double.Parse(tokens[2]));
+            return vehicleFactory.Create(tokens[0], double.Parse(tokens[1]), double.Parse(tokens[2]), int.Parse(tokens[3]));
 
         }
 
@@ -86,6 +86,7 @@ namespace Vehicles.Core
             else if (command == "Refuel")
             {
                 double amount = double.Parse(commandTokens[2]);
+
                 vehicle.Refuel(amount);
             }
         }

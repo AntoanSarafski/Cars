@@ -8,19 +8,23 @@ namespace Vehicles.Factories
 {
     public class VehicleFactory : IVehicleFactory
     {
-        public IVehicle Create(string type, double fuelQuantity, double fuelConsumption)
+        public IVehicle Create(string type, double fuelQuantity, double fuelConsumption, int tankCapacity)
         {
             switch (type)
             {
                 case "Car":
-                    return new Car(fuelQuantity, fuelConsumption);
+                    return new Car(fuelQuantity, fuelConsumption, tankCapacity);
 
                 case "Truck":
-                    return new Truck(fuelQuantity, fuelConsumption);
+                    return new Truck(fuelQuantity, fuelConsumption, tankCapacity);
+                
+                case "Bus":
+                    return new Truck(fuelQuantity, fuelConsumption, tankCapacity);
 
                 default:
                     throw new ArgumentException("Invalid vehicle type");
             }
         }
+
     }
 }

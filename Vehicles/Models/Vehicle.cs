@@ -9,10 +9,12 @@ namespace Vehicles.Models
 
         protected Vehicle(double fuelQuantity,
             double fuelConsumption, 
-            double increasedConsumption)
+            double increasedConsumption,
+            int tankCapacity)
         {
             FuelQuantity = fuelQuantity;
             FuelConsumption = fuelConsumption;
+            TankCapacity = tankCapacity;
             this.increasedConsumption = increasedConsumption;
         }
 
@@ -20,6 +22,8 @@ namespace Vehicles.Models
         public double FuelQuantity { get; private set; }
 
         public double FuelConsumption { get; private set; }
+
+        public int TankCapacity { get; private set; }
 
         public string Drive(double distance)
         {

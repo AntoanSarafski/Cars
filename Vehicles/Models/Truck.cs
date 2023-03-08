@@ -4,8 +4,8 @@
     {
         private const double IncreasedConsumption = 1.6;
 
-        public Truck(double fuelQuantity, double fuelConsumption) 
-            : base(fuelQuantity, fuelConsumption, IncreasedConsumption)
+        public Truck(double fuelQuantity, double fuelConsumption, int tankCapacity) 
+            : base(fuelQuantity, fuelConsumption, IncreasedConsumption, tankCapacity)
         {
             
         }

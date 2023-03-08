@@ -12,7 +12,7 @@ namespace Vehicles
         static void Main(string[] args)
         {
             IReader reader = new ConsoleReader();
-            IWriter writer = new FileWriter();
+            IWriter writer = new ConsoleWriter();
             IVehicleFactory factory = new VehicleFactory();
 
             IEngine engine = new Engine(reader, writer, factory);
