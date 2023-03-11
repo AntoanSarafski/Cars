@@ -92,6 +92,7 @@ namespace Vehicles.Core
             }
             else if (command == "Drive")
             {
+                
                 double distance = double.Parse(commandTokens[2]);
                 writer.WriteLine(vehicle.Drive(distance));
             }

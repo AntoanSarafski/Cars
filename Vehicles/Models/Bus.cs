@@ -8,5 +8,7 @@
             : base(fuelQuantity, fuelConsumption, IncreasedConsumption, tankCapacity)
         {
         }
+
+        
     }
 }

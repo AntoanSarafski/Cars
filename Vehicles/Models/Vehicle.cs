@@ -6,6 +6,7 @@ namespace Vehicles.Models
     public abstract class Vehicle : IVehicle
     {
         private double increasedConsumption;
+        private double fuelQuantity;
 
         protected Vehicle(double fuelQuantity,
             double fuelConsumption, 
@@ -19,9 +20,20 @@ namespace Vehicles.Models
         }
 
 
-        public double FuelQuantity { get; private set; }
+        public double FuelQuantity
+        {
+            get => fuelQuantity;
+            set
+            {
+                if (value > this.TankCapacity)
+                {
+                    value = 0;
+                }
+                fuelQuantity = value;
+            }
+        }
 
-        public double FuelConsumption { get; private set; }
+        public virtual double FuelConsumption { get; private set; }
 
         public int TankCapacity { get; private set; }
 
