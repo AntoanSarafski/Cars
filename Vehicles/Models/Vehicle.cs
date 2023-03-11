@@ -20,18 +20,7 @@ namespace Vehicles.Models
         }
 
 
-        public double FuelQuantity
-        {
-            get => fuelQuantity;
-            set
-            {
-                if (value > this.TankCapacity)
-                {
-                    value = 0;
-                }
-                fuelQuantity = value;
-            }
-        }
+        public double FuelQuantity { get; private set; }
 
         public virtual double FuelConsumption { get; private set; }
 
