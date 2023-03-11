@@ -17,6 +17,10 @@ namespace Vehicles.Models
             FuelConsumption = fuelConsumption;
             TankCapacity = tankCapacity;
             this.increasedConsumption = increasedConsumption;
+            if (FuelQuantity > TankCapacity)
+            {
+                FuelQuantity = 0;
+            }
         }
 
 
